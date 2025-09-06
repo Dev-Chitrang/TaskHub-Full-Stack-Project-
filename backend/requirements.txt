@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pydantic
+SqlAlchemy
+psycopg2-binary
+bcrypt
+PyJWT
+python-dotenv
+decouple
+pydantic[email]
+slowapi
+email-validator
+python-recaptcha
+apscheduler
+orjson
+python-multipart
