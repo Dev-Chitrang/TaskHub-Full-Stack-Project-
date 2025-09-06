@@ -85,10 +85,13 @@ TaskHub is a modern collaborative project management platform built with FastAPI
 * **Realtime:** WebSockets
 
 ## Images
-## Images
-![Home Page](Images/Screenshot 2025-09-06 192627.png)
-![Dashboard 1](Images/Screenshot 2025-09-06 182714.png)
-![Dashboard 2](Images/Screenshot 2025-09-06 185629.png)
+
+![Home Page](Images/Screenshot%202025-09-06%20192627.png)
+
+![Dashboard 1](Images/Screenshot%202025-09-06%20182714.png)
+
+![Dashboard 2](Images/Screenshot%202025-09-06%20185629.png)
+
 
 
 
