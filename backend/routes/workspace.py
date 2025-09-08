@@ -15,7 +15,7 @@ import jwt
 from dotenv import load_dotenv
 import os
 import mailer
-from models.notifications import Notification
+from datetime import datetime as _dt_cls, date as _date_cls
 from utils.notification_generation import create_notification
 
 load_dotenv()
@@ -209,7 +209,12 @@ def get_workspace_stats(
         # --- Fetch projects & tasks ---
         projects = (
             db.query(Project)
-            .filter(Project.workspace_id == workspace_id)
+            .join(ProjectMember)
+            .filter(
+                Project.workspace_id == workspace_id,
+                ProjectMember.user_id == current_user.id,
+            )
+            .options(joinedload(Project.members))
             .order_by(Project.created_at.desc())
             .all()
         )
@@ -242,7 +247,6 @@ def get_workspace_stats(
 
         # --- Helper to normalize values to date ---
         # Accepts: datetime, date, or ISO date/datetime string. Returns date or None.
-        from datetime import datetime as _dt_cls, date as _date_cls
 
         def _to_date(val):
             if val is None:

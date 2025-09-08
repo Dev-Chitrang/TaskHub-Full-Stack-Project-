@@ -39,6 +39,7 @@ const ProjectDetails = () => {
   const router = useRouter()
 
   const [isCreateTask, setIsCreateTask] = useState(false)
+  const [TaskFilter, setTaskFilter] = useState('all')
   const [sortBy, setSortBy] = useState("due_date")
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [isEditingDesc, setIsEditingDesc] = useState(false)
@@ -200,6 +201,7 @@ const ProjectDetails = () => {
   ) || []
 
   const projectMembers = project.members
+
   return (
     <div className="flex flex-col h-full space-y-8 px-4 md:px-8">
       {/* Header */}

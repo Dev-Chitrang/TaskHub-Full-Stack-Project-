@@ -53,7 +53,7 @@ class AttachmentResponse(BaseModel):
 class UserLiteResponse(BaseModel):
     id: UUID
     name: Optional[str] = None
-    profile_picture: Optional[str] = None
+    profilePicture: Optional[str] = None
 
     model_config = {"from_attributes": True}
 

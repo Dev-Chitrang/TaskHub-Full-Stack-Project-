@@ -1,4 +1,13 @@
-from sqlalchemy import Column, String, DateTime, ForeignKey, Boolean, Enum, Integer, JSON
+from sqlalchemy import (
+    Column,
+    String,
+    DateTime,
+    ForeignKey,
+    Boolean,
+    Enum,
+    Integer,
+    JSON,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 import uuid, enum
@@ -20,13 +29,16 @@ class Role(enum.Enum):
     contributor = "contributor"
     viewer = "viewer"
 
+
 class Project(Base):
     __tablename__ = "projects"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
-    workspace_id = Column(UUID(as_uuid=True), ForeignKey("workspaces.id"), nullable=False)
+    workspace_id = Column(
+        UUID(as_uuid=True), ForeignKey("workspaces.id"), nullable=False
+    )
     status = Column(Enum(ProjectStatus), default=ProjectStatus.planning)
     start_date = Column(DateTime, nullable=True)
     due_date = Column(DateTime, nullable=True)
@@ -57,3 +69,7 @@ class ProjectMember(Base):
     @hybrid_property
     def name(self):
         return self.user.name if self.user else None
+
+    @hybrid_property
+    def profilePicture(self):
+        return self.user.profilePicture if self.user else None

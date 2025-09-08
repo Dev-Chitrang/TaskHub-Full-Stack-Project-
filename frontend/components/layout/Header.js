@@ -33,7 +33,6 @@ const Header = ({
     onCreateWorkspace
 }) => {
     const { user, logout, token } = useAuth()
-    console.log(user)
 
     const params = useSearchParams()
     const workspaceId = params.get("workspaceId")

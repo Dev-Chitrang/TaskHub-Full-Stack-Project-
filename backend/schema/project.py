@@ -6,6 +6,7 @@ from typing import Optional, List
 from .task import TaskResponse
 from models.projects import Role
 
+
 class ProjectStatus(Enum):
     planning = "planning"
     in_progress = "in_progress"
@@ -18,6 +19,7 @@ class MemberResponse(BaseModel):
     user_id: UUID
     role: Role
     name: str
+    profilePicture: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -32,7 +34,6 @@ class ProjectBase(BaseModel):
     due_date: Optional[datetime] = None
     tags: Optional[List[str]] = []
     members: Optional[List[MemberResponse]] = []
-
 
 
 class ProjectResponse(BaseModel):

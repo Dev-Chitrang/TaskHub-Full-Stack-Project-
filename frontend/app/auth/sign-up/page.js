@@ -29,7 +29,6 @@ const SignUp = () => {
   const { mutate, isPending } = useSignUpMutation()
 
   const handleOnSubmit = (data) => {
-    console.log(data)
     mutate(data, {
       onSuccess: (res) => {
         toast.success(res.email_status, {

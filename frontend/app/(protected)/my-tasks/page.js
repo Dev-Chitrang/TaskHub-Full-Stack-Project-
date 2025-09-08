@@ -160,7 +160,7 @@ const MyTasks = () => {
                 </TabsList>
 
                 {/* LIST VIEW */}
-                <TabsContent value="list">
+                <TabsContent value="list" className={'mb-3'}>
                     <Card>
                         <CardHeader>
                             <CardTitle>My Tasks</CardTitle>
@@ -278,7 +278,7 @@ const MyTasks = () => {
 export default MyTasks;
 
 const TaskColumn = ({ title, tasks }) => (
-    <Card>
+    <Card className={'mb-3'}>
         <CardHeader>
             <CardTitle className="flex items-center justify-between">
                 {title}
@@ -288,17 +288,17 @@ const TaskColumn = ({ title, tasks }) => (
 
         <CardContent className="p-3 space-y-3 max-h-[600px] overflow-y-auto text-center">
             {tasks?.map((task) => (
-                <Card key={task.id} className="flex items-center hover:shadow-md transition-shadow">
+                <Card key={task.id} className="flex flex-col p-3 hover:shadow-md transition-shadow">
                     <Link
                         href={`/workspaces/${task.project?.workspace}/projects/${task.project?.id}/tasks/${task.id}`}
-                        className="block"
+                        className="flex flex-col h-full"
                     >
                         <h3 className="font-medium">{task.title}</h3>
-                        <p className="text-sm text-muted-foreground line-clamp-3">
+                        <p className="text-sm text-muted-foreground line-clamp-3 flex-grow">
                             {task.description || "No description"}
                         </p>
 
-                        <div className="flex items-center mt-2 gap-2">
+                        <div className="flex items-center mt-3 gap-2 flex-wrap">
                             <Badge
                                 variant={
                                     task.priority === "high" ? "destructive" : "secondary"
@@ -312,7 +312,7 @@ const TaskColumn = ({ title, tasks }) => (
                             )}
 
                             {task.due_date && (
-                                <span className="text-sm text-muted-foreground">
+                                <span className="text-sm text-muted-foreground ml-auto">
                                     {format(new Date(task.due_date), "PPPP")}
                                 </span>
                             )}

@@ -63,10 +63,18 @@ const WorkspaceHeader = ({
                         <div className='flex space-x-2'>
                             {
                                 members.map((member) => (
-                                    <Avatar key={member.id}>
-                                        <AvatarImage src={member.user.profilePicture} alt={member.user.name} className='relative h-8 w-8 rounded-full border-2 border-background overflow-hidden' title={member.user.name} />
-                                        <AvatarFallback>
-                                            {member.user.name.charAt(0)}
+                                    <Avatar key={member.id} className="w-8 h-8">
+                                        <AvatarImage
+                                            src={member.user.profilePicture}
+                                            alt={member.user.name}
+                                            className="relative h-8 w-8 rounded-full border-2 border-background overflow-hidden"
+                                            title={member.user.name}
+                                        />
+                                        <AvatarFallback
+                                            className="rounded-full w-8 h-8 border-2 border-background bg-slate-500 text-white flex items-center justify-center"
+                                            title={member.user.name}
+                                        >
+                                            {member.user.name.charAt(0).toUpperCase()}
                                         </AvatarFallback>
                                     </Avatar>
                                 ))
