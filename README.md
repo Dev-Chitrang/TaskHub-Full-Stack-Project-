@@ -86,11 +86,15 @@ TaskHub is a modern collaborative project management platform built with FastAPI
 
 ## Images
 
-![Home Page](Images/Screenshot%202025-09-06%20192627.png)
+![Home Page](Images/Screenshot 2025-09-08 210238.png)
 
-![Dashboard 1](Images/Screenshot%202025-09-06%20182714.png)
+![Dashboard 1](Images/Screenshot 2025-09-08 210812.png)
 
-![Dashboard 2](Images/Screenshot%202025-09-06%20185629.png)
+![Dashboard 2](Images/Screenshot 2025-09-08 210854.png)
+
+![Workspace](Images/Screenshot 2025-09-08 212141.png)
+
+![Projects](Images/Screenshot 2025-09-08 224602.png)
 
 
 
