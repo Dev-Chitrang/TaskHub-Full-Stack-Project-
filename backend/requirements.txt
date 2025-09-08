@@ -10,7 +10,8 @@ decouple
 pydantic[email]
 slowapi
 email-validator
-python-recaptcha
 apscheduler
 orjson
 python-multipart
+py3-validate-email
+disposable-email-domains

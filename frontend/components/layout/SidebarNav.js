@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
 
+const ITEMS = ['/dashboard', '/workspaces', '/my-tasks', '/members', '/achieved', '/settings']
+
 const SidebarNav = ({
     items, isCollapsed, className, currentWorkspace, ...props
 }) => {
@@ -15,7 +17,7 @@ const SidebarNav = ({
             {
                 items.map((element) => {
                     const Icon = element.icon
-                    const isActive = location === element.href
+                    const isActive = location.startsWith(element.href);
                     const handleClick = () => {
                         if (element.href === "/workspacee") {
                             router.push(element.href)
@@ -31,7 +33,7 @@ const SidebarNav = ({
                         <TooltipProvider key={element.href}>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant={'ghost'} className={cn('justify-start', isActive && 'underline underline-offset-4 bg-blue-400')} onClick={handleClick}>
+                                    <Button variant={'ghost'} className={cn('justify-start', isActive && 'underline underline-offset-4 bg-accent')} onClick={handleClick}>
                                         <Icon className='mr-2 size-5' />
                                         {
                                             isCollapsed ? (<span className='sr-only hover:'>element.title</span>) : (element.title)

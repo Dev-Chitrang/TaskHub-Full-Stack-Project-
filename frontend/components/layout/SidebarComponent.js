@@ -34,49 +34,46 @@ const SidebarComponent = ({ currentWorkspace }) => {
     return (
         <div
             className={cn(
-                "flex flex-col border-r bg-sidebar transition-all duration-300 ease-in-out h-full",
+                "flex flex-col border-r transition-all duration-300 ease-in-out h-full",
                 isCollapsed ? 'w-16 md:w-[105px]' : "w-16 md:w-[240px]"
             )}
         >
             {/* Top Section */}
             <div className="border-b">
-                {/* Expanded */}
-                {!isCollapsed && (
-                    <div className="flex items-center justify-between px-6 py-4">
-                        <Link href="/dashboard" className="flex items-center gap-2">
-                            <Wrench className="text-blue-600" size={20} />
-                            <span className="font-semibold text-lg hidden md:block">TaskHub</span>
-                        </Link>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="rounded-full hidden md:flex"
-                            onClick={() => setIsCollapsed(true)}
+                <div
+                    className={cn(
+                        "flex items-center px-6 py-4 transition-all duration-300 ease-in-out",
+                        isCollapsed ? "justify-center px-3" : "justify-between"
+                    )}
+                >
+                    {/* Logo + Title */}
+                    <Link href="/dashboard" className="flex items-center gap-2">
+                        <Wrench className="text-blue-600 transition-all duration-300" size={isCollapsed ? 22 : 20} />
+                        <span
+                            className={cn(
+                                "hidden md:block font-semibold text-lg bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300",
+                                isCollapsed
+                                    ? "opacity-0 w-0 ml-0"
+                                    : "opacity-100 w-auto ml-2"
+                            )}
                         >
-                            <ChevronsLeft size={16} />
-                        </Button>
-                    </div>
-                )}
+                            TaskHub
+                        </span>
+                    </Link>
 
-                {/* Collapsed */}
-                {isCollapsed && (
-                    <div className="flex items-center justify-center py-4 px-3 gap-3 transition-all duration-300 ease-in-out">
-                        {/* Wrench perfectly centered with icons below */}
-                        <Link href="/dashboard">
-                            <Wrench className="text-blue-600" size={22} />
-                        </Link>
-
-                        {/* ChevronsRight next to Wrench with gap */}
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="rounded-full hidden md:flex hover:bg-transparent"
-                            onClick={() => setIsCollapsed(false)}
-                        >
-                            <ChevronsRight size={16} />
-                        </Button>
-                    </div>
-                )}
+                    {/* Toggle Button */}
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className={cn(
+                            "rounded-full hidden md:flex hover:bg-transparent transition-transform duration-300",
+                            isCollapsed ? "rotate-180" : "rotate-0"
+                        )}
+                        onClick={() => setIsCollapsed(!isCollapsed)}
+                    >
+                        {isCollapsed ? <ChevronsRight size={16} /> : <ChevronsLeft size={16} />}
+                    </Button>
+                </div>
             </div>
 
             {/* Nav Items */}
@@ -94,11 +91,19 @@ const SidebarComponent = ({ currentWorkspace }) => {
                 <Button
                     variant="ghost"
                     size={isCollapsed ? 'icon' : 'default'}
-                    className="ml-auto"
+                    className="ml-auto transition-all duration-300"
                     onClick={logout}
                 >
-                    <LogOut className={cn(isCollapsed && "mr-2")} size={16} />
-                    <span className="hidden md:block">LogOut</span>
+                    {
+                        isCollapsed
+                            ? (<LogOut size={16} />)
+                            : (
+                                <>
+                                    <span className="hidden md:block">LogOut</span>
+                                    <LogOut size={16} />
+                                </>
+                            )
+                    }
                 </Button>
             </div>
         </div>

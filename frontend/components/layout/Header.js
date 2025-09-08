@@ -87,7 +87,7 @@ const Header = ({
     if (isLoading) return <div>Loading workspaces...</div>
 
     return (
-        <div className='bg-background sticky top-0 z-40 border-b'>
+        <div className='sticky top-0 z-40 border-b'>
             <div className='flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4'>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>

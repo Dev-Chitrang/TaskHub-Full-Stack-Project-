@@ -104,7 +104,7 @@ const TaskTrendsChart = ({ taskTrends }) => {
                 </div>
 
                 {/* Weekly summary */}
-                <div className="mt-4 p-3 bg-gray-50 rounded-md text-gray-700 text-sm">
+                <div className="mt-4 p-3 rounded-md text-gray-700 text-sm">
                     {summary}
                 </div>
 
